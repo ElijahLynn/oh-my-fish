@@ -127,7 +127,7 @@ end
 function prompt_drupal_site_alias
     set -l alias (drush site-get)
     set -l alias (echo \'$alias\' | tr -d '\'')
-    prompt_segment purple white "$alias"
+    prompt_segment purple black "$alias"
 end
 
 function prompt_status -d "the symbols for a non zero exit status, root and background jobs"
