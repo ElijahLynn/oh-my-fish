@@ -127,7 +127,7 @@ end
 function prompt_drupal_site_alias
     set -l pid %self
     if test -f "$TMPDIR/drush-env/drush-drupal-site-$pid"
-        prompt_segment purple white (command cat $TMPDIR/drush-env/drush-drupal-site-$pid)
+        prompt_segment purple black (command cat $TMPDIR/drush-env/drush-drupal-site-$pid)
     end
 end
 
