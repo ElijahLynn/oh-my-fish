@@ -125,9 +125,10 @@ function prompt_git -d "Display the actual git state"
 end
 
 function prompt_drupal_site_alias
-    set -l alias (drush site-get)
-    set -l alias (echo \'$alias\' | tr -d '\'')
-    prompt_segment purple white "$alias"
+    set -l pid %self
+    if test -f "$TMPDIR/drush-env/drush-drupal-site-$pid"
+        prompt_segment purple white (command cat $TMPDIR/drush-env/drush-drupal-site-$pid)
+    end
 end
 
 function prompt_status -d "the symbols for a non zero exit status, root and background jobs"
