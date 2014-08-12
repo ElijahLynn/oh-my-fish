@@ -124,6 +124,12 @@ function prompt_git -d "Display the actual git state"
   end
 end
 
+function prompt_drupal_site_alias
+    set -l alias (drush site-get)
+    set -l alias (echo \'$alias\' | tr -d '\'')
+    prompt_segment purple white "$alias"
+end
+
 function prompt_status -d "the symbols for a non zero exit status, root and background jobs"
     if [ $RETVAL -ne 0 ]
       prompt_segment black red "✘"
@@ -151,5 +157,6 @@ function fish_prompt
   prompt_user
   prompt_dir
   prompt_git
+  prompt_drupal_site_alias
   prompt_finish
 end
