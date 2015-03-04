@@ -130,6 +130,13 @@ function prompt_drupal_site_alias
     prompt_segment purple black "$alias"
 end
 
+function prompt_drush_site_alias_fast
+    set -l pid %self
+    if test -f "$TMPDIR/drush-env/drush-drupal-site-$pid"
+        prompt_segment purple black (command cat $TMPDIR/drush-env/drush-drupal-site-$pid)
+    end
+end
+
 function prompt_status -d "the symbols for a non zero exit status, root and background jobs"
     if [ $RETVAL -ne 0 ]
       prompt_segment black red "✘"
@@ -157,6 +164,6 @@ function fish_prompt
   prompt_user
   prompt_dir
   prompt_git
-  prompt_drupal_site_alias
+  prompt_drush_site_alias_fast
   prompt_finish
 end
